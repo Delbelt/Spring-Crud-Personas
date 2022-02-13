@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html xmlns:th="htpp://www.thymeleaf.org">
 
 	<head>
@@ -8,6 +7,8 @@
 	</head>	
 	
 	<body>
+	
+	<h2><a th:href="@{/agregarPersona}">[[#{persona.agregar}]]</a></h2>
 
 	<div th:if="${listaPersona != null and ! listaPersona.empty}"> <!-- CONDICION IF -->
 		<table border="1"> <!-- TABLA -->
