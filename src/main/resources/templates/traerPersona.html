@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="htpp://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>[[#{titulo-traer}]]</title>
+	</head>
+	
+	<body>			
+			<h1>[[#{persona.datos-persona}]]</h1>			
+			
+			<table border="1"> <!-- TABLA -->
+		
+				<tr> <!-- Fila de Tabla TITULO -->
+					<th>[[#{persona.nombre}]]</th>
+					<th>[[#{persona.apellido}]]</th> <!--Celda Encabezado de tabla (negrita) -->
+					<th>[[#{persona.dni}]]</th>
+				</tr>
+					
+					<tr> <!-- Fila de Tabla Atributos -->
+					<td th:text="${persona.nombre}">Muestra nombre</td>
+					<td th:text="${persona.apellido}">Muestra apellido</td> <!-- Celda de dato en la tabla -->
+					<td th:text="${persona.dni}">Muestra dni</td>
+					</tr>
+			</table>
+			<br>
+			<h2><a th:href="@{/}"> [[#{accion.cancelar}]] </a></h2>			
+	</body>	
+</html>
