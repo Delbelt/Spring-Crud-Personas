@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="htpp://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>[[#{titulo-agregar-modificar}]]</title>
+	</head>
+	
+	<body>
+			<h1>[[#{persona.datos-persona}]]</h1>	
+					
+			<h2><a th:href="@{/}"> [[#{accion.cancelar}]] </a></h2>
+			
+			<form th:action="@{/guardar}" method="post" th:object="${persona}">
+			
+				<input type="hidden" name="idPersona" th:field="*{idPersona}"/> <!-- HIDDEN = OCULTO A LA VISTA -->
+				<!-- SE AGREGA ESTE INPUT PARA DECIRLE A SPRING QUE EL OBJETO YA ESTA INSTANCIADO EN CASO DE MODIFICAR -->
+				<!-- PARA QUE NO TE LO VUELVA A AGREGAR, PORQUE SUPONE QUE ES UNO NUEVO, PERO AL TENER ID, LO CONSERVA -->
+				
+				<label for="nombre">[[#{persona.nombre}]]:</label>
+				<input autocomplete="off" type="text" name="nombre" th:field="*{nombre}"/> <!-- th:field ES LA FORMA DE COMUNICARSE CON "th:object" -->
+				<!-- ASTERISCO * SIRVE PARA SELECCIONAR EL ATRIBUTO DE th:object TANTO PARA LEER O MODIFICAR -->
+				<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error Nombre</span> <!-- validacion -->
+				
+					<br><br>
+					
+				<label for="apellido">[[#{persona.apellido}]]:</label>
+				<input autocomplete="off" type="text" name="apellido" th:field="*{apellido}"/>
+				<span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error Apellido</span> <!-- validacion -->			
+				
+					<br><br>
+					
+				<label for="dni">[[#{persona.dni}]]:</label>
+				<input autocomplete="off" type="number" name="dni" th:field="*{dni}"/>
+				<span th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}">Error Dni</span> <!-- validacion -->			
+				
+					<br><br>
+					
+				<input type="submit" name="guardar" th:value="#{accion.guardar}"/>
+				
+			</form>		
+	</body>
+</html>
