@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html xmlns:th="htpp://www.thymeleaf.org"
 xmlns:sec="htpp://www.thymeleaf.org/extras/spring-security">
 
@@ -8,8 +9,8 @@ xmlns:sec="htpp://www.thymeleaf.org/extras/spring-security">
 	</head>	
 	
 	<body>
-	<header th:replace="layout/plantilla :: header"></header> <!-- Para traer una plantilla :: el componente especifico -->
-	<h2><a th:href="@{/agregarPersona}">[[#{persona.agregar}]]</a></h2>
+		<header th:replace="layout/plantilla :: header"></header> <!-- Para traer una plantilla :: el componente especifico -->
+		<h2><a sec:authorize="hasRole ('ROLE_ADMIN')" th:href="@{/agregarPersona}">[[#{persona.agregar}]]</a></h2>	
 
 	<div th:if="${listaPersona != null and ! listaPersona.empty}"> <!-- CONDICION IF -->
 		<table border="1"> <!-- TABLA -->
@@ -19,8 +20,8 @@ xmlns:sec="htpp://www.thymeleaf.org/extras/spring-security">
 				<th>[[#{persona.apellido}]]</th> <!--Celda Encabezado de tabla (negrita) -->
 				<th>[[#{persona.dni}]]</th>
 				<th>[[#{accion.mostrar}]]</th>
-				<th>[[#{accion.editar}]]</th>
-				<th>[[#{accion.eliminar}]]</th>
+				<th sec:authorize="hasRole ('ROLE_ADMIN')">[[#{accion.editar}]]</th>
+				<th sec:authorize="hasRole ('ROLE_ADMIN')">[[#{accion.eliminar}]]</th>
 			</tr>
 			
 			<tr th:each="persona : ${listaPersona}"> <!-- bucle fore que recorre la lista -->
@@ -33,11 +34,11 @@ xmlns:sec="htpp://www.thymeleaf.org/extras/spring-security">
 					<a th:href="@{/traer/} + ${persona.idPersona}" th:text="#{accion.mostrar}"></a> 			
 				</td>  
 				
-				<td>
+				<td sec:authorize="hasRole ('ROLE_ADMIN')">
 					<a th:href="@{/editar/} + ${persona.idPersona}" th:text="#{accion.editar}"></a> <!-- TIPO: PATH VARIABLE ${persona.idPersona}-->					
 				</td>				
 				
-				<td>
+				<td sec:authorize="hasRole ('ROLE_ADMIN')" >
 					<a th:href="@{/eliminar(idPersona=${persona.idPersona})}" th:text="#{accion.eliminar}"></a> <!-- TIPO: QUERY PARAMETERS -->	
 				</td>
 				
@@ -48,7 +49,9 @@ xmlns:sec="htpp://www.thymeleaf.org/extras/spring-security">
 	<div th:if="${listaPersona == null or listaPersona.empty}">
 			<h2>[[#{persona.lista-vacia}]]</h2>
 	</div>
-	<footer th:replace="layout/plantilla :: footer"></footer>
+		
 	</body>
+	
+	<footer th:replace="layout/plantilla :: footer"></footer>
 	
 </html>

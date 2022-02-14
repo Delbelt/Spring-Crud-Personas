@@ -21,10 +21,10 @@ xmlns:sec="htpp://www.thymeleaf.org/extras/spring-security">
 			<form method="POST" th:action="@{logout}">
 			
 				<br/>
-				<b>[[#{seguridad.user}]]:</b> <span sec:authentication="name">Usuario Que hizo Login</span>
+				<b>[[#{seguridad.user}]]:</b> <span sec:authentication="name"></span>
 				<br/>
 				
-				<b>[[#{seguridad.roles}]]:</b> <span sec:authentication="principal.authorities">Roles que tiene el usuario</span>
+				<b>[[#{seguridad.roles}]]:</b> <span sec:authentication="principal.authorities"></span>
 				<br/>
 				
 				<a href="#" onclick= "this.parentNode.submit()"> <h3>[[#{seguridad.cerrar-sesion}]]</h3> </a> <!-- Deslogea al usuario Spring Segurity -->
