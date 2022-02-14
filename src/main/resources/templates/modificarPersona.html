@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="htpp://www.thymeleaf.org">
+<html xmlns:th="htpp://www.thymeleaf.org"
+xmlns:sec="htpp://www.thymeleaf.org/extras/spring-security">
 	<head>
 		<meta charset="UTF-8">
 		<title>[[#{titulo-agregar-modificar}]]</title>
 	</head>
 	
 	<body>
+			<header th:replace="layout/plantilla :: header"></header>
 			<h1>[[#{persona.datos-persona}]]</h1>	
 					
 			<h2><a th:href="@{/}"> [[#{accion.cancelar}]] </a></h2>

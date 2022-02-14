@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="htpp://www.thymeleaf.org">
+<html xmlns:th="htpp://www.thymeleaf.org"
+xmlns:sec="htpp://www.thymeleaf.org/extras/spring-security">
 
 	<head>
 		<meta charset="UTF-8">
@@ -7,7 +8,7 @@
 	</head>	
 	
 	<body>
-	
+	<header th:replace="layout/plantilla :: header"></header> <!-- Para traer una plantilla :: el componente especifico -->
 	<h2><a th:href="@{/agregarPersona}">[[#{persona.agregar}]]</a></h2>
 
 	<div th:if="${listaPersona != null and ! listaPersona.empty}"> <!-- CONDICION IF -->
@@ -47,7 +48,7 @@
 	<div th:if="${listaPersona == null or listaPersona.empty}">
 			<h2>[[#{persona.lista-vacia}]]</h2>
 	</div>
-		
+	<footer th:replace="layout/plantilla :: footer"></footer>
 	</body>
 	
 </html>

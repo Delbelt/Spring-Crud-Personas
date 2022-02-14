@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="htpp://www.thymeleaf.org"
+xmlns:sec="htpp://www.thymeleaf.org/extras/spring-security">
+	<head>
+		<meta charset="UTF-8">
+		<title>Plantilla</title>		
+	</head>
+	
+	<body>
+		<header th:fragment="header"> <!-- Se le agrega el fragment para poder reutilizarlo en otras paginas -->
+			<h1 th:text="#{plantilla.titulo}">Titulo</h1>
+			<hr/>
+		</header>
+	</body>
+	
+	<footer th:fragment="footer">
+		<hr/>	
+		<div>		
+			<form method="POST" th:action="@{logout}">
+			
+				<br/>
+				<b>[[#{seguridad.user}]]:</b> <span sec:authentication="name">Usuario Que hizo Login</span>
+				<br/>
+				
+				<b>[[#{seguridad.roles}]]:</b> <span sec:authentication="principal.authorities">Roles que tiene el usuario</span>
+				<br/>
+				
+				<a href="#" onclick= "this.parentNode.submit()"> <h3>[[#{seguridad.cerrar-sesion}]]</h3> </a> <!-- Deslogea al usuario Spring Segurity -->
+			</form>
+			
+				<a th:href="@{''(lang=es)}">ES</a> |
+				<a th:href="@{''(lang=en)}">EN</a> |
+			<span>[[#{plantilla.pie-pagina}]] <a href="https://github.com/delbelt" target="_blank">Delbelt</a> </span>					
+		</div>
+	</footer>
+	
+</html>

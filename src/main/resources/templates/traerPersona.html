@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="htpp://www.thymeleaf.org">
+<html xmlns:th="htpp://www.thymeleaf.org"
+xmlns:sec="htpp://www.thymeleaf.org/extras/spring-security">
 	<head>
 		<meta charset="UTF-8">
 		<title>[[#{titulo-traer}]]</title>
 	</head>
 	
 	<body>			
-			<h1>[[#{persona.datos-persona}]]</h1>			
+			<h1>[[#{persona.datos-persona}]]</h1>
+			<header th:replace="layout/plantilla :: header"></header>			
 			
 			<table border="1"> <!-- TABLA -->
 		
@@ -23,6 +25,7 @@
 					</tr>
 			</table>
 			<br>
-			<h2><a th:href="@{/}"> [[#{accion.cancelar}]] </a></h2>			
+			<h2><a th:href="@{/}"> [[#{accion.cancelar}]] </a></h2>
+			<footer th:replace="layout/plantilla :: footer"></footer>			
 	</body>	
 </html>
