@@ -44,7 +44,7 @@ public class WebConfig implements WebMvcConfigurer {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registro) //Registra las rutas que no esten pasando por ningun controlador
 	{
-		registro.addViewController("/").setViewName("inicioHTML"); //Ruta de inicio
+		registro.addViewController("/").setViewName("inicio"); //Ruta de inicio
 		registro.addViewController("/login"); //Ruta de login
 		registro.addViewController("/errores/403").setViewName("/errores/403"); //Ruta de acceso denegado - Roles
 	}
