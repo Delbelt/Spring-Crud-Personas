@@ -3,6 +3,8 @@ package app.controlador;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -22,11 +24,11 @@ public class ControladorDAO {
 	private PersonaABM sistema; //Instancia el objeto de Negocio para aplicar los metodos
 	
 	@GetMapping("/")
-	public String inicio(Model model)
+	public String inicio(Model model, @AuthenticationPrincipal User user)
 	{			
 		var listaPersona = sistema.traerListaPersona(); //Variable de Lombook
 		//List<Persona> listaPersona = new ArrayList<Persona>(); //Similar a esto, pero no hace falta definir que "tipo" es
-		
+		log.info("USER LOGIN: " + user.getUsername());
 		log.info("Inicio Controlador DAO");
 		
 		model.addAttribute("listaPersona", listaPersona); //Agrega el atributo a la pantalla de inicio
