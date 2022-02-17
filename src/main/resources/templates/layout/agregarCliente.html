@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns:th="htpp://www.thymeleaf.org"
+xmlns:sec="htpp://www.thymeleaf.org/extras/spring-security">
+
+	<head></head>
+	
+	<body>
+		<section th:fragment="agregarCliente">
+			<div id="agregarCliente" class="modal fade">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+					<div class="modal-header bg-info text-white">
+						<h5 class="modal-title" th:text="#{accion.agregar}"></h5>
+						<button class="close" data-dismiss="modal">
+							<span>&times;</span>
+						</button>
+					</div>
+					<form th:action="@{/guardar}" th:object="${persona}"
+					method="POST" class="was-validated">
+						<div class="modal-body">
+							<div class="form-group">
+							
+								<label for="nombre">[[#{persona.nombre}]]:</label>
+								<input autocomplete="off" type="text" class="form-control" name="nombre"
+								required="true">
+								
+								<label for="apellido">[[#{persona.apellido}]]:</label>
+								<input autocomplete="off" type="text" class="form-control" name="apellido"
+								required="true">
+								
+								<label for="dni">[[#{persona.dni}]]:</label>
+								<input autocomplete="off" type="number" class="form-control" name="dni"
+								required="true">
+								
+							<div class="modal-footer">
+								<button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
+							</div>
+
+							</div>
+						</div>
+					</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+	
+</html>

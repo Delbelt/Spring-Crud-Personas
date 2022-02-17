@@ -3,54 +3,17 @@
 <html xmlns:th="htpp://www.thymeleaf.org"
 xmlns:sec="htpp://www.thymeleaf.org/extras/spring-security">
 
-	<head>
+	<head th:replace="layout/plantilla :: head">
 		<meta charset="UTF-8">
 		<title>[[#{titulo-inicio}]]</title>
 	</head>	
 	
 	<body>
 		<header th:replace="layout/plantilla :: header"></header> <!-- Para traer una plantilla :: el componente especifico -->
-		<h2><a sec:authorize="hasRole ('ROLE_ADMIN')" th:href="@{/agregarPersona}">[[#{persona.agregar}]]</a></h2>	
-
-	<div th:if="${listaPersona != null and ! listaPersona.empty}"> <!-- CONDICION IF -->
-		<table border="1"> <!-- TABLA -->
-		
-			<tr> <!-- Fila de Tabla -->
-				<th>[[#{persona.nombre}]]</th>
-				<th>[[#{persona.apellido}]]</th> <!--Celda Encabezado de tabla (negrita) -->
-				<th>[[#{persona.dni}]]</th>
-				<th>[[#{accion.mostrar}]]</th>
-				<th sec:authorize="hasRole ('ROLE_ADMIN')">[[#{accion.editar}]]</th>
-				<th sec:authorize="hasRole ('ROLE_ADMIN')">[[#{accion.eliminar}]]</th>
-			</tr>
-			
-			<tr th:each="persona : ${listaPersona}"> <!-- bucle fore que recorre la lista -->
-							
-				<td th:text="${persona.nombre}">Muestra nombre</td>
-				<td th:text="${persona.apellido}">Muestra apellido</td> <!-- Celda de dato en la tabla -->
-				<td th:text="${persona.dni}">Muestra dni</td>			
-
-				<td>
-					<a th:href="@{/traer/} + ${persona.idPersona}" th:text="#{accion.mostrar}"></a> 			
-				</td>  
-				
-				<td sec:authorize="hasRole ('ROLE_ADMIN')">
-					<a th:href="@{/editar/} + ${persona.idPersona}" th:text="#{accion.editar}"></a> <!-- TIPO: PATH VARIABLE ${persona.idPersona}-->					
-				</td>				
-				
-				<td sec:authorize="hasRole ('ROLE_ADMIN')" >
-					<a th:href="@{/eliminar(idPersona=${persona.idPersona})}" th:text="#{accion.eliminar}"></a> <!-- TIPO: QUERY PARAMETERS -->	
-				</td>
-				
-			</tr>
-		</table>		
-	</div>
-	
-	<div th:if="${listaPersona == null or listaPersona.empty}">
-			<h2>[[#{persona.lista-vacia}]]</h2>
-	</div>
-		
-	</body>
+		<section th:replace="layout/botonesAgregar :: botonesAgregar"></section>
+		<section th:replace="layout/agregarCliente :: agregarCliente"></section>
+		<section th:replace="layout/listadoClientes :: listadoClientes"></section>						
+	</body>		
 	
 	<footer th:replace="layout/plantilla :: footer"></footer>
 	

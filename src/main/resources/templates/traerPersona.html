@@ -1,31 +1,70 @@
 <!DOCTYPE html>
-<html xmlns:th="htpp://www.thymeleaf.org"
-xmlns:sec="htpp://www.thymeleaf.org/extras/spring-security">
-	<head>
+<html xmlns:th="htpp://www.thymeleaf.org">
+	<head th:replace="layout/plantilla :: head">
 		<meta charset="UTF-8">
 		<title>[[#{titulo-traer}]]</title>
 	</head>
 	
-	<body>			
-			<h1>[[#{persona.datos-persona}]]</h1>
-			<header th:replace="layout/plantilla :: header"></header>			
-			
-			<table border="1"> <!-- TABLA -->
-		
-				<tr> <!-- Fila de Tabla TITULO -->
-					<th>[[#{persona.nombre}]]</th>
-					<th>[[#{persona.apellido}]]</th> <!--Celda Encabezado de tabla (negrita) -->
-					<th>[[#{persona.dni}]]</th>
-				</tr>
-					
-					<tr> <!-- Fila de Tabla Atributos -->
-					<td th:text="${persona.nombre}">Muestra nombre</td>
-					<td th:text="${persona.apellido}">Muestra apellido</td> <!-- Celda de dato en la tabla -->
-					<td th:text="${persona.dni}">Muestra dni</td>
-					</tr>
-			</table>
-			<br>
-			<h2><a th:href="@{/}"> [[#{accion.cancelar}]] </a></h2>
-			<footer th:replace="layout/plantilla :: footer"></footer>			
-	</body>	
+	<body>
+			<header th:replace="layout/plantilla :: header"></header>
+			<br> <br>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-9">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="text-center">[[#{persona.datos-persona}]]</h4>
+								</div>
+																
+								<table>
+									<thead class="thead-dark">
+									
+										<tr class="text-center">
+												<td> </td>											
+										</tr>
+										
+										<tr class="text-center">
+											<th>[[#{persona.nombre}]]</th>
+											<th>[[#{persona.apellido}]]</th>
+											<th>[[#{persona.dni}]]</th>
+										</tr>
+									</thead>
+									
+									<tbody>
+																									
+										<tr class="text-center">
+											<td th:text="${persona.nombre}">Muestra nombre</td>
+											<td th:text="${persona.apellido}">Muestra apellido</td>
+											<td th:text="${persona.dni}">Muestra dni</td>																			
+										</tr>
+										
+										<tr class="text-center">
+											<td> </td>											
+										</tr>
+																				
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>				
+				<br>					
+					<div class="container">
+						<div class="row">
+							<div class="col-md-9">
+								<div class=card>
+									<div class=card-header>
+										<div class="col-md">
+											<a th:href="@{/}" class="btn btn-light btn-block">
+											<i class="fas fa-arrow-left"></i>  [[#{accion.cancelar}]]
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>							
+						</div>						
+					</div>											
+	</body>
+	
+	<footer th:replace="layout/plantilla :: footer"></footer>	
 </html>
