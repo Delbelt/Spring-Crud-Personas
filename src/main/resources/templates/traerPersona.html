@@ -6,64 +6,64 @@
 	</head>
 	
 	<body>
-			<header th:replace="layout/plantilla :: header"></header>
-			<br> <br>
-				<div class="container">
-					<div class="row">
-						<div class="col-md-9">
-							<div class="card">
-								<div class="card-header">
-									<h4 class="text-center">[[#{persona.datos-persona}]]</h4>
-								</div>
-																
-								<table>
-									<thead class="thead-dark">
-									
-										<tr class="text-center">
-												<td> </td>											
-										</tr>
-										
-										<tr class="text-center">
-											<th>[[#{persona.nombre}]]</th>
-											<th>[[#{persona.apellido}]]</th>
-											<th>[[#{persona.dni}]]</th>
-										</tr>
-									</thead>
-									
-									<tbody>
-																									
-										<tr class="text-center">
-											<td th:text="${persona.nombre}">Muestra nombre</td>
-											<td th:text="${persona.apellido}">Muestra apellido</td>
-											<td th:text="${persona.dni}">Muestra dni</td>																			
-										</tr>
-										
-										<tr class="text-center">
-											<td> </td>											
-										</tr>
-																				
-									</tbody>
-								</table>
+		<header th:replace="layout/plantilla :: header"></header>
+		<br> <br>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="text-center">[[#{persona.datos-persona}]]</h4>
 							</div>
+															
+							<table>
+								<thead class="thead-dark">
+								
+									<tr class="text-center">
+											<td> </td>											
+									</tr>
+									
+									<tr class="text-center">
+										<th>[[#{persona.nombre}]]</th>
+										<th>[[#{persona.apellido}]]</th>
+										<th>[[#{persona.dni}]]</th>
+									</tr>
+								</thead>
+								
+								<tbody>
+																								
+									<tr class="text-center">
+										<td th:text="${persona.nombre}">Muestra nombre</td>
+										<td th:text="${persona.apellido}">Muestra apellido</td>
+										<td th:text="${persona.dni}">Muestra dni</td>																			
+									</tr>
+									
+									<tr class="text-center">
+										<td> </td>											
+									</tr>
+																			
+								</tbody>
+							</table>
 						</div>
 					</div>
-				</div>				
-				<br>					
-					<div class="container">
-						<div class="row">
-							<div class="col-md-9">
-								<div class=card>
-									<div class=card-header>
-										<div class="col-md">
-											<a th:href="@{/}" class="btn btn-light btn-block">
-											<i class="fas fa-arrow-left"></i>  [[#{accion.cancelar}]]
-											</a>
-										</div>
-									</div>
+				</div>
+			</div>				
+			<br>					
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+						<div class=card>
+							<div class=card-header>
+								<div class="col-md">
+									<a th:href="@{/}" class="btn btn-light btn-block">
+									<i class="fas fa-arrow-left"></i>  [[#{accion.cancelar}]]
+									</a>
 								</div>
-							</div>							
-						</div>						
-					</div>											
+							</div>
+						</div>
+					</div>							
+				</div>						
+			</div>											
 	</body>
 	
 	<footer th:replace="layout/plantilla :: footer"></footer>	

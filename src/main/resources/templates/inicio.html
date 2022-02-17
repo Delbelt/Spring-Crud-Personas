@@ -9,7 +9,8 @@ xmlns:sec="htpp://www.thymeleaf.org/extras/spring-security">
 	</head>	
 	
 	<body>
-		<header th:replace="layout/plantilla :: header"></header> <!-- Para traer una plantilla :: el componente especifico -->
+		<!-- Para traer una plantilla :: el componente especifico -->
+		<header th:replace="layout/plantilla :: header"></header> 
 		<section th:replace="layout/botonesAgregar :: botonesAgregar"></section>
 		<section th:replace="layout/agregarCliente :: agregarCliente"></section>
 		<section th:replace="layout/listadoClientes :: listadoClientes"></section>						

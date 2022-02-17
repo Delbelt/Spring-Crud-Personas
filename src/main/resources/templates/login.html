@@ -45,6 +45,39 @@
 			</div>
 		</div>
 	</section>
+	
+		
+		<section id="login">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 mx-auto">
+					<div class="card">
+						<div class="card-header">
+							<h4>[[#{login.crear}]]</h4>
+							<div class="card-body">
+								<form method="POST" th:action="@{login}">
+									<div class="form-group">
+										<label for="username">[[#{login.usuario}]]:</label>
+										<br>
+										<input autocomplete="off" type="text" name="username" id="username">
+									</div>
+									
+									<div class="form-group">
+										<label for="password">[[#{login.clave}]]:</label>
+										<br>
+										<input type="password" name="password" id="password">
+									</div>
+																		
+									<br>
+									<h3><input class="btn btn-primary btn-block" type="submit" value="Login"></h3> <!-- Logea al usuario Spring Segurity -->
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 			
 	<footer th:replace="layout/plantilla ::footer"></footer>
